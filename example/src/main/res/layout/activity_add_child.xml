@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/child1"
+
+    tools:context="com.pinal.credencys.appintroexample.AddChild">
+
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Add Child"
+        android:id="@+id/btnAdd"
+        android:layout_marginTop="178dp"
+        android:background="@drawable/btn"
+        style="@style/butttonstyle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Show Child List"
+        android:id="@+id/btnView"
+        android:background="@drawable/btn"
+        style="@style/butttonstyle"
+        android:layout_marginTop="77dp"
+        android:layout_below="@+id/btnAdd"
+        android:layout_alignLeft="@+id/btnAdd"
+        android:layout_alignStart="@+id/btnAdd" />
+</RelativeLayout>
