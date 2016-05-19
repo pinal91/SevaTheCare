@@ -9,7 +9,7 @@ import android.widget.Button;
 public class AddChild extends AppCompatActivity {
 
 
-    Button btnAdd,btnView;
+    Button btnAdd,btnView,btnCon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,12 +17,22 @@ public class AddChild extends AppCompatActivity {
 
         btnAdd=(Button)findViewById(R.id.btnAdd);
         btnView=(Button)findViewById(R.id.btnView);
+        btnCon=(Button)findViewById(R.id.btnCon);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(AddChild.this,ChildRegistration.class);
                 startActivity(i);
+            }
+        });
+
+        btnCon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i1=new Intent(AddChild.this,AddFund.class);
+                startActivity(i1);
             }
         });
 

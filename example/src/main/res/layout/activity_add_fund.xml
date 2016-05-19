@@ -4,6 +4,8 @@
     android:id="@+id/scrollView1"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:background="#e8e8e7"
+
     >
 
     <LinearLayout
@@ -29,7 +31,7 @@
 
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Child Registration"
+                android:text="Add Fund"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="25dp"
                 android:textSize="18sp"
@@ -80,78 +82,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Child Name"
+                    android:hint=" Enter Amount"
                     android:id="@+id/edtFname"
                     />
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Father Name"
-                    android:id="@+id/edtLname"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Standard"
-                    android:inputType="textEmailAddress"
-                    android:id="@+id/edtEmail"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Family Income"
-                    android:id="@+id/edtAdress"
-                    />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="School"
-                    android:id="@+id/edtPassword"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:hint="Contact Number"
-                    android:id="@+id/edtCnfrmPassword"
-                    />
-            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -169,27 +104,8 @@
 
 
 
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="fill_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-
-                >
-
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spnvillage"
-                    android:layout_weight="1"
-
-
-                    />
-            </LinearLayout>
             <Button
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Submit"

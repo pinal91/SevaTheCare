@@ -119,7 +119,7 @@ public class Login extends AppCompatActivity {
                     sname = jobj.getString("name");
                     sid = jobj.getString("id");
                     semail = jobj.getString("email");
-                    saddress = jobj.getString("adress");
+                    saddress = jobj.getString("village");
 
                     snum=jobj.getString("mobile");
 

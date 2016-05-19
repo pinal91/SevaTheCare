@@ -50,18 +50,20 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
     private int myear,mmonth,mdate;
     ArrayList<String> worldlist;
     ArrayList<String> data1;
-
+    PreferenceHelper pf;
     ArrayList<HashMap<String, String>> data;
     LocationManager locationManager;
     String provider;
     ProgressDialog pd;
+    String id;
     String stryear_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_child_registration);
 
+        id =pf.getPreferences(ChildRegistration.this,"r_id");
         fname=(EditText)findViewById(R.id.edtFname);
         lname=(EditText)findViewById(R.id.edtLname);
         email=(EditText)findViewById(R.id.edtEmail);
@@ -69,7 +71,7 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
         password=(EditText)findViewById(R.id.edtPassword);
         repassword=(EditText)findViewById(R.id.edtCnfrmPassword);
         date=(EditText)findViewById(R.id.edtDate);
-        number=(EditText)findViewById(R.id.edtPhn);
+        //number=(EditText)findViewById(R.id.edtPhn);
         spnvillage=(Spinner)findViewById(R.id.spnvillage);
 
 
@@ -153,45 +155,36 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
                 time = sdf.format(date);
                 Toast.makeText(getApplication(), time,Toast.LENGTH_LONG).show();
 
-                p8=number.getText().toString();
+
                 if(p1.equals("")) {
 
-                    fname.setError("Enter Your Name");
+                    fname.setError("Enter Name");
                 }
 
-                else if (!p3.contains("@")) {
 
-                    email.setError("Enter Valid Email");
-                    Toast.makeText(getApplicationContext(), "please enter valide email address", Toast.LENGTH_LONG).show();
+                else if (p2.equals("")){
+
+                    lname.setError("Enter Father Name");
                 }
-                else if (!p3.contains(".com")){
+                else if (p3.equals("")){
 
-                    email.setError("Enter Valid Email");
-
-                    Toast.makeText(getApplicationContext(), "please enter valide email address", Toast.LENGTH_LONG).show();
-
-
+                    email.setError("Enter Std");
                 }
-
                 else if (p4.equals("")){
 
-                    adress.setError("Enter Your Address");
+                    adress.setError("Enter Family Income");
+                }
+                else if (p5.equals("")){
+
+                    password.setError("Enter School");
+                }
+                else if (p6.equals("")){
+
+                    repassword.setError("Enter Contact Number");
                 }
 
-                else if (p5.isEmpty() || p5.length() < 4 ||p5.length() > 10){
 
-                    password.setError("between 4 and 10 alphanumeric characters");
-                }
-                else if (!p5.equals(p6)) {
 
-                    password.setError("Password not match");
-                    repassword.setError("Password not match");
-                    Toast.makeText(getApplicationContext(), "password doesn't match", Toast.LENGTH_LONG).show();
-                }
-                else if (!p8.matches(MobilePattern)){
-
-                    number.setError("Enter Valid Number");
-                }
 
                 else {
 
@@ -206,7 +199,7 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
     class Insert extends AsyncTask<Void, Void, Void> {
 
 
-        String s = "http://pinal3291.site88.net/insert.php?name=" + Uri.encode(p1) + "&village=" + Uri.encode(spn) + "&email=" + Uri.encode(p3)+"&address=" + Uri.encode(p4)+"&pass=" + Uri.encode(p5)+"&date="+Uri.encode(p7)+"&mobile="+Uri.encode(p8);
+        String s = "http://pinal3291.site88.net/childinsert.php?name=" + Uri.encode(p1) + "&father=" + Uri.encode(p2) + "&std=" + Uri.encode(p3)+"&income=" + Uri.encode(p4)+"&village=" + Uri.encode(spn)+"&school="+Uri.encode(p5)+"&mobile="+Uri.encode(p6)+"&u_id="+id;
 
 
 
@@ -246,7 +239,7 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
 
                 Toast.makeText(getApplicationContext(), "Inserterd Sucess", Toast.LENGTH_LONG).show();
 
-                Intent i3=new Intent(ChildRegistration.this,Login.class);
+                Intent i3=new Intent(getApplicationContext(),ChildRegistration.class);
                 startActivity(i3);
                 finish();
             }

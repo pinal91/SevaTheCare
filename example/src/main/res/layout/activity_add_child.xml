@@ -30,4 +30,17 @@
         android:layout_below="@+id/btnAdd"
         android:layout_alignLeft="@+id/btnAdd"
         android:layout_alignStart="@+id/btnAdd" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Add Contribution"
+        android:id="@+id/btnCon"
+        android:background="@drawable/btn"
+        style="@style/butttonstyle"
+        android:layout_marginTop="83dp"
+        android:layout_below="@+id/btnView"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>
