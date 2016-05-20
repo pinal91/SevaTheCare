@@ -25,11 +25,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -71,7 +69,6 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
         password=(EditText)findViewById(R.id.edtPassword);
         repassword=(EditText)findViewById(R.id.edtCnfrmPassword);
         date=(EditText)findViewById(R.id.edtDate);
-        //number=(EditText)findViewById(R.id.edtPhn);
         spnvillage=(Spinner)findViewById(R.id.spnvillage);
 
 
@@ -107,11 +104,8 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
         });
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        // Creating an empty criteria object
         Criteria criteria = new Criteria();
-
-        // Getting the name of the provider that meets the criteria
-        provider = locationManager.getBestProvider(criteria, false);
+          provider = locationManager.getBestProvider(criteria, false);
 
         if (provider != null && !provider.equals("")) {
 
@@ -183,10 +177,7 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
                     repassword.setError("Enter Contact Number");
                 }
 
-
-
-
-                else {
+               else {
 
                     Insert in = new Insert();
                     in.execute();
@@ -198,10 +189,7 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
 
     class Insert extends AsyncTask<Void, Void, Void> {
 
-
         String s = "http://pinal3291.site88.net/childinsert.php?name=" + Uri.encode(p1) + "&father=" + Uri.encode(p2) + "&std=" + Uri.encode(p3)+"&income=" + Uri.encode(p4)+"&village=" + Uri.encode(spn)+"&school="+Uri.encode(p5)+"&mobile="+Uri.encode(p6)+"&u_id="+id;
-
-
 
         int success;
         @Override
@@ -218,10 +206,7 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
         protected Void doInBackground(Void... params) {
 
             js = new Json();
-
-
             Log.d("Async task", "Done");
-
             String json = js.getdata(s);
             Log.d("Login attempt", js.toString());
 
@@ -258,9 +243,6 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
             pd.setMessage("Loading...");
             pd.setIndeterminate(false);
             pd.show();
-
-
-
         }
 
         @Override

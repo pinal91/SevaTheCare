@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.pinal.credencys.appintroexample.Detail"
+    android:gravity="center"
+    >
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name :"
+        android:textColor="#453e3e"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:id="@+id/t6" />
+
+    <TextView
+        android:textColor="#453e3e"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_below="@+id/t6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Village :"
+        android:id="@+id/t7" />
+
+    <TextView
+        android:textColor="#453e3e"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_below="@+id/t7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email :"
+        android:id="@+id/t8" />
+
+    <TextView
+        android:textColor="#453e3e"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_below="@+id/t8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address :"
+        android:id="@+id/t9" />
+
+    <TextView
+        android:textColor="#453e3e"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_below="@+id/t9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mobile :"
+        android:id="@+id/t10" />
+
+    <TextView
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/t1"
+        android:layout_above="@+id/t2"
+        android:layout_alignLeft="@+id/textView13"
+        android:layout_alignStart="@+id/textView13" />
+
+    <TextView
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/t2"
+        android:layout_below="@+id/t6"
+        android:layout_alignLeft="@+id/t1"
+        android:layout_alignStart="@+id/t1" />
+
+    <TextView
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/t3"
+        android:layout_below="@+id/t2"
+        android:layout_alignLeft="@+id/t2"
+        android:layout_alignStart="@+id/t2" />
+
+    <TextView
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/t4"
+        android:layout_above="@+id/t10"
+        android:layout_alignLeft="@+id/textView13"
+        android:layout_alignStart="@+id/textView13" />
+
+    <TextView
+        android:textSize="20sp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textView13"
+        android:layout_below="@+id/t4"
+        android:layout_toRightOf="@+id/t9"
+        android:layout_toEndOf="@+id/t9" />
+</RelativeLayout>

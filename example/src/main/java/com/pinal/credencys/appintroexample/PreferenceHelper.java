@@ -8,16 +8,17 @@ import android.content.SharedPreferences;
 
 public class PreferenceHelper {
 	public static void SavePreferences(Activity activity, String key,
-			String value) {
+									   String value) {
 		SharedPreferences sharedPreferences = activity.getSharedPreferences(
 				"choco", Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = sharedPreferences.edit();
 		editor.putString(key, value);
 		editor.commit();
 	}
+
 	//Save Boolean
 	public static void SavePreferencesBoolean(Activity activity, String key,
-			boolean value) {
+											  boolean value) {
 		SharedPreferences sharedPreferences = activity.getSharedPreferences(
 				"choco", Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -49,20 +50,23 @@ public class PreferenceHelper {
 		// Log.i(TAG, savedPref);
 		return savedPref;
 	}
-	public static String getPreferencesWithDefault(Activity activity, String key,String defaultval) {
+
+	public static String getPreferencesWithDefault(Activity activity, String key, String defaultval) {
 		SharedPreferences sharedPreferences = activity.getSharedPreferences(
 				"choco", Context.MODE_PRIVATE);
 		String savedPref = sharedPreferences.getString(key, defaultval);
 		// Log.i(TAG, savedPref);
 		return savedPref;
 	}
-	public static String getPreferenceswithdefault(Activity activity, String key,String strdefault) {
+
+	public static String getPreferenceswithdefault(Activity activity, String key, String strdefault) {
 		SharedPreferences sharedPreferences = activity.getSharedPreferences(
 				"choco", Context.MODE_PRIVATE);
 		String savedPref = sharedPreferences.getString(key, strdefault);
 		// Log.i(TAG, savedPref);
 		return savedPref;
 	}
+
 	public static boolean getPreferencesBoolean(Activity activity, String key) {
 		SharedPreferences sharedPreferences = activity.getSharedPreferences(
 				"choco", Context.MODE_PRIVATE);
@@ -70,11 +74,4 @@ public class PreferenceHelper {
 		// Log.i(TAG, savedPref);
 		return savedPref;
 	}
-/*	public static boolean getPreferencesBooleanWithDefault(Activity activity, String key,boolean defaultval) {
-		SharedPreferences sharedPreferences = activity.getSharedPreferences(
-				"choco", Context.MODE_PRIVATE);
-		boolean savedPref = sharedPreferences.getBoolean(key, defaultval);
-		// Log.i(TAG, savedPref);
-		return savedPref;
-	}*/
 }

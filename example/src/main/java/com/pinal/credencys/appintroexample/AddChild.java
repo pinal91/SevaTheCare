@@ -36,5 +36,14 @@ public class AddChild extends AppCompatActivity {
             }
         });
 
+        btnView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i2=new Intent(AddChild.this,ChildList.class);
+                startActivity(i2);
+            }
+        });
+
     }
 }

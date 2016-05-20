@@ -162,10 +162,7 @@ public class Login extends AppCompatActivity {
                     PreferenceHelper.SavePreferences(Login.this,"r_name",sname);
                     PreferenceHelper.SavePreferences(Login.this,"r_email",semail);
                     PreferenceHelper.SavePreferences(Login.this,"r_address",saddress);
-
                     PreferenceHelper.SavePreferences(Login.this,"r_num",snum);
-
-
 
                     Intent i = new Intent(Login.this, AddChild.class);
                     startActivity(i);
