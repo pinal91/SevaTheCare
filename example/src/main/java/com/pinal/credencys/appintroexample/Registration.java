@@ -10,6 +10,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
@@ -75,8 +76,8 @@ public class Registration extends AppCompatActivity  implements LocationListener
         number=(EditText)findViewById(R.id.edtPhn);
         spnvillage=(Spinner)findViewById(R.id.spnvillage);
 
+        isInternetOn();
 
-     new getresult().execute();
 
         date.setOnClickListener(new View.OnClickListener() {
 
@@ -140,6 +141,7 @@ public class Registration extends AppCompatActivity  implements LocationListener
             @Override
             public void onClick(View v) {
 
+
                 p1 = fname.getText().toString();
                 p2 = lname.getText().toString();
                 p3 = email.getText().toString();
@@ -197,13 +199,43 @@ public class Registration extends AppCompatActivity  implements LocationListener
                 }
 
                 else {
+                    isInternetOn();
 
                     Insert in = new Insert();
                     in.execute();
-
                 }
             }
         });
+    }
+
+
+    public final boolean isInternetOn() {
+
+        // get Connectivity Manager object to check connection
+        ConnectivityManager connec =
+                (ConnectivityManager)getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
+
+        // Check for network connections
+        if ( connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTED ||
+                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED ) {
+
+            // if connected with internet
+
+            Toast.makeText(this, " Connected ", Toast.LENGTH_LONG).show();
+
+            new getresult().execute();
+            return true;
+
+        } else if (
+                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.DISCONNECTED ||
+                        connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED  ) {
+
+            Toast.makeText(this, " Not Connected ", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return false;
     }
 
     class Insert extends AsyncTask<Void, Void, Void> {

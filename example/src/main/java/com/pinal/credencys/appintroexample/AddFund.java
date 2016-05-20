@@ -178,7 +178,7 @@ public class AddFund extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "Inserterd Sucess", Toast.LENGTH_LONG).show();
 
-                Intent i3=new Intent(getApplicationContext(),AddFund.class);
+                Intent i3=new Intent(getApplicationContext(),AddChild.class);
                 startActivity(i3);
                 finish();
             }
