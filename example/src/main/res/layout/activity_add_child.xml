@@ -1,46 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/child1"
 
-    tools:context="com.pinal.credencys.appintroexample.AddChild">
+    android:background="@drawable/background"
 
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Add Child"
-        android:id="@+id/btnAdd"
-        android:layout_marginTop="178dp"
-        android:background="@drawable/btn"
-        style="@style/butttonstyle"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    android:layout_height="fill_parent" >
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Show Child List"
-        android:id="@+id/btnView"
-        android:background="@drawable/btn"
-        style="@style/butttonstyle"
-        android:layout_marginTop="77dp"
-        android:layout_below="@+id/btnAdd"
-        android:layout_alignLeft="@+id/btnAdd"
-        android:layout_alignStart="@+id/btnAdd" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Add Contribution"
-        android:id="@+id/btnCon"
-        android:background="@drawable/btn"
-        style="@style/butttonstyle"
-        android:layout_marginTop="83dp"
-        android:layout_below="@+id/btnView"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:orientation="horizontal" >
+
+            <Button
+                android:text="Add Child"
+                android:id="@+id/btnAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".1"
+                android:drawableTop="@drawable/child10"
+                android:textColor="#f1561f"
+                android:background="@android:color/transparent"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+            <Button
+                android:text="Show Child List"
+                android:id="@+id/btnView"
+                android:layout_weight=".1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/childlist"
+                android:textColor="#f1561f"
+                android:background="@android:color/transparent"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:orientation="horizontal" >
+
+            <Button
+                android:text="Add Contribution"
+                android:id="@+id/btnCon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".1"
+                android:drawableTop="@drawable/fund"
+                android:textColor="#E74C3C"
+                android:background="@android:color/transparent"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnFund"
+                android:layout_weight=".1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Show Fund List"
+                android:drawableTop="@drawable/viewfund"
+                android:textColor="#f1561f"
+                android:background="@android:color/transparent"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:orientation="horizontal" >
+
+            <Button
+                android:drawableTop="@drawable/myfund"
+
+                android:id="@+id/btnMyFund"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Fund"
+                android:layout_weight=".1"
+                android:textColor="#f1561f"
+                android:background="@android:color/transparent"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+            <Button
+                android:visibility="gone"
+                android:id="@+id/btnlocation"
+                android:layout_weight=".1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="your location"
+                android:textColor="#f1561f"
+                android:background="@android:color/transparent"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
 
 
-</RelativeLayout>
+</ScrollView>

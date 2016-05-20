@@ -1,58 +1,53 @@
 package com.pinal.credencys.appintroexample;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
+
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Detail extends AppCompatActivity {
+public class FundList extends AppCompatActivity {
 
-    String id;
+    //  ListView lv;
+    RecyclerView mRVFishPrice;
     Json js;
-    TextView t1,t2,t3,t4,t5;
+    ArrayList<HashMap<String,String>>  data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-
-        t1=(TextView)findViewById(R.id.t1);
-        t2=(TextView)findViewById(R.id.t2);
-        t3=(TextView)findViewById(R.id.t3);
-        t4=(TextView)findViewById(R.id.t4);
-        t5=(TextView)findViewById(R.id.t5);
-
-        Intent i=getIntent();
-        id=i.getStringExtra("u_id");
+        setContentView(R.layout.activity_fund_list);
 
 
-        Toast.makeText(getApplicationContext(),id,Toast.LENGTH_SHORT).show();
 
-        new get().execute();
+        mRVFishPrice = (RecyclerView)findViewById(R.id.fishPriceList);
+
+        data=new ArrayList<HashMap<String, String>>();
+
+        get g=new get();
+        g.execute();
     }
 
 
-
-    class get extends AsyncTask<Void,Void,Void> {
+    class get extends AsyncTask<Void,Void,Void>{
 
 
         ProgressDialog pd;
-        String name,village,email,address,mobile;
+        String name,area,type,bed,bath,rooms,country,u_id;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            pd=new ProgressDialog(Detail.this);
+            pd=new ProgressDialog(FundList.this);
             pd.setMessage("getting data");
             pd.setIndeterminate(false);
             pd.setCancelable(false);
@@ -64,7 +59,7 @@ public class Detail extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
 
 
-            String s = "http://pinal3291.site88.net/detailuser.php?id="+id;
+            String s = "http://pinal3291.site88.net/ViewFund.php";
 
             Log.d("dataaaaaaa",s.toString());
 
@@ -79,8 +74,8 @@ public class Detail extends AppCompatActivity {
             if(resp!= null){
                 try {
 
-                    JSONObject jobj=new JSONObject(resp);
-                    JSONArray jarray=jobj.getJSONArray("book_list");
+                    JSONObject  jobj=new JSONObject(resp);
+                    JSONArray jarray=jobj.getJSONArray("fund_list");
 
                     for (int i=0;i<jarray.length();i++){
 
@@ -88,15 +83,25 @@ public class Detail extends AppCompatActivity {
 
 
                         name = jo.getString("name");
-                        village = jo.getString("village");
-                        email = jo.getString("email");
-                        address = jo.getString("address");
-                        mobile = jo.getString("mobile");
+                        area = jo.getString("amount");
+                        type = jo.getString("date");
+                        bed = jo.getString("village");
+                        bath = jo.getString("mobile");
 
 
                         Log.d("object json:", jo.toString());
+                        HashMap<String,String> map=new HashMap<String, String>();
 
-                                          }
+                        map.put("name",name);
+                        map.put("area",area);
+                        map.put("type",type);
+                        map.put("bed",bed);
+                        map.put("bath",bath);
+
+                        data.add(map);
+
+                        Log.d("map value ", String.valueOf(map));
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -112,15 +117,19 @@ public class Detail extends AppCompatActivity {
                 pd.dismiss();
 
             }
+            FundAdapter an = new FundAdapter(FundList.this,data);
+            Log.d("d", "d");
 
-            t1.setText(name);
-            t2.setText(village);
-            t3.setText(email);
-            t4.setText(address);
-            t5.setText(mobile);
+            mRVFishPrice.setAdapter(an);
+            mRVFishPrice.setLayoutManager(new LinearLayoutManager(FundList.this));
+
+
+
+
         }
 
 
     }
 
 }
+

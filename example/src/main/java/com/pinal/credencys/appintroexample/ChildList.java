@@ -27,7 +27,7 @@ public class ChildList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_list);
 
-       /* lv=(ListView)findViewById(R.id.lv);*/
+
 
         mRVFishPrice = (RecyclerView)findViewById(R.id.fishPriceList);
 

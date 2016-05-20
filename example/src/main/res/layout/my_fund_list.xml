@@ -17,14 +17,14 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       >
+        >
 
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hellllll"
+            android:text="New Text"
             android:id="@+id/tv1"
             android:textColor="#453e3e"
             android:textStyle="italic"
@@ -38,6 +38,7 @@
             />
 
         <TextView
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="70dp"
             android:textColor="#453e3e"
             android:textStyle="italic"
@@ -50,6 +51,8 @@
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:layout_marginTop="3dp"
+android:visibility="gone"
             android:textColor="#453e3e"
             android:textStyle="italic"
             android:layout_marginLeft="70dp"
@@ -62,6 +65,8 @@
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:layout_marginTop="3dp"
+android:visibility="gone"
             android:layout_marginLeft="70dp"
             android:textColor="#453e3e"
             android:textStyle="italic"
@@ -74,6 +79,8 @@
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:layout_marginTop="3dp"
+android:visibility="gone"
             android:layout_marginLeft="70dp"
             android:textColor="#453e3e"
             android:textStyle="italic"
@@ -86,6 +93,7 @@
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:visibility="gone"
             android:layout_marginLeft="70dp"
             android:textColor="#453e3e"
             android:textStyle="italic"
@@ -98,6 +106,7 @@
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:visibility="gone"
             android:layout_marginLeft="70dp"
             android:textColor="#453e3e"
             android:textStyle="italic"
@@ -112,9 +121,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name:"
+            android:text="Amount :"
             android:textColor="#453e3e"
-android:textStyle="bold"
+            android:textStyle="bold"
             android:id="@+id/textView2"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -123,19 +132,21 @@ android:textStyle="bold"
         <TextView
             android:textColor="#453e3e"
             android:textStyle="bold"
-
+android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Father:"
+            android:text="Date :"
             android:id="@+id/textView3"
             android:layout_below="@+id/tv1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:layout_marginTop="3dp"
+android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Std:"
+            android:text="Date :"
             android:textColor="#453e3e"
             android:textStyle="bold"
 
@@ -145,9 +156,11 @@ android:textStyle="bold"
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:layout_marginTop="3dp"
+android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Income:"
+            android:text="Village :"
             android:textColor="#453e3e"
             android:textStyle="bold"
 
@@ -160,9 +173,11 @@ android:textStyle="bold"
             android:layout_alignEnd="@+id/textView8" />
 
         <TextView
+            android:layout_marginTop="3dp"
+android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Village:"
+            android:text="Mobile:"
             android:textColor="#453e3e"
             android:textStyle="bold"
 
@@ -175,6 +190,7 @@ android:textStyle="bold"
             android:layout_alignEnd="@+id/textView5" />
 
         <TextView
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="School:"
@@ -190,6 +206,7 @@ android:textStyle="bold"
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contact:"

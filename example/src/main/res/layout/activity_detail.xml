@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.pinal.credencys.appintroexample.Detail"
     android:gravity="center"
+    android:background="#c76c37"
     >
 
     <TextView
@@ -107,4 +108,20 @@
         android:layout_below="@+id/t4"
         android:layout_toRightOf="@+id/t9"
         android:layout_toEndOf="@+id/t9" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Added By :"
+        android:id="@+id/textView9"
+        android:layout_above="@+id/t6"
+        android:textColor="#ff0000"
+         android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_alignLeft="@+id/t6"
+        android:layout_alignStart="@+id/t6"
+        android:layout_marginBottom="36dp"
+        android:layout_alignRight="@+id/t1"
+        android:layout_alignEnd="@+id/t1" />
 </RelativeLayout>

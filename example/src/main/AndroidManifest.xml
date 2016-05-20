@@ -34,7 +34,9 @@
         <activity android:name=".ChildRegistration" />
         <activity android:name=".AddFund" />
         <activity android:name=".ChildList" />
-        <activity android:name=".Detail"></activity>
+        <activity android:name=".Detail" />
+        <activity android:name=".FundList" />
+        <activity android:name=".MyFund"></activity>
     </application>
 
 </manifest>

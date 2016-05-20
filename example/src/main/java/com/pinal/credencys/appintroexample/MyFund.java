@@ -1,58 +1,56 @@
 package com.pinal.credencys.appintroexample;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
+
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Detail extends AppCompatActivity {
+public class MyFund extends AppCompatActivity {
 
-    String id;
+    //  ListView lv;
+    RecyclerView mRVFishPrice;
     Json js;
-    TextView t1,t2,t3,t4,t5;
+    PreferenceHelper pf;
+    String id;
+    ArrayList<HashMap<String,String>>  data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_my_fund);
 
-        t1=(TextView)findViewById(R.id.t1);
-        t2=(TextView)findViewById(R.id.t2);
-        t3=(TextView)findViewById(R.id.t3);
-        t4=(TextView)findViewById(R.id.t4);
-        t5=(TextView)findViewById(R.id.t5);
-
-        Intent i=getIntent();
-        id=i.getStringExtra("u_id");
+        id =pf.getPreferences(MyFund.this,"r_id");
 
 
-        Toast.makeText(getApplicationContext(),id,Toast.LENGTH_SHORT).show();
+        mRVFishPrice = (RecyclerView)findViewById(R.id.fishPriceList);
 
-        new get().execute();
+        data=new ArrayList<HashMap<String, String>>();
+
+        get g=new get();
+        g.execute();
     }
 
 
-
-    class get extends AsyncTask<Void,Void,Void> {
+    class get extends AsyncTask<Void,Void,Void>{
 
 
         ProgressDialog pd;
-        String name,village,email,address,mobile;
+        String name,area,type,bed,bath,rooms,country,u_id;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            pd=new ProgressDialog(Detail.this);
+            pd=new ProgressDialog(MyFund.this);
             pd.setMessage("getting data");
             pd.setIndeterminate(false);
             pd.setCancelable(false);
@@ -64,7 +62,7 @@ public class Detail extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
 
 
-            String s = "http://pinal3291.site88.net/detailuser.php?id="+id;
+            String s = "http://pinal3291.site88.net/MyFund.php?id="+id;
 
             Log.d("dataaaaaaa",s.toString());
 
@@ -79,24 +77,31 @@ public class Detail extends AppCompatActivity {
             if(resp!= null){
                 try {
 
-                    JSONObject jobj=new JSONObject(resp);
-                    JSONArray jarray=jobj.getJSONArray("book_list");
+                    JSONObject  jobj=new JSONObject(resp);
+                    JSONArray jarray=jobj.getJSONArray("fund_list");
 
                     for (int i=0;i<jarray.length();i++){
 
                         JSONObject jo=jarray.getJSONObject(i);
 
 
-                        name = jo.getString("name");
-                        village = jo.getString("village");
-                        email = jo.getString("email");
-                        address = jo.getString("address");
-                        mobile = jo.getString("mobile");
+
+                        area = jo.getString("amount");
+                        type = jo.getString("date");
 
 
                         Log.d("object json:", jo.toString());
+                        HashMap<String,String> map=new HashMap<String, String>();
 
-                                          }
+                        map.put("area",area);
+
+                        map.put("type",type);
+
+
+                        data.add(map);
+
+                        Log.d("map value ", String.valueOf(map));
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -112,15 +117,19 @@ public class Detail extends AppCompatActivity {
                 pd.dismiss();
 
             }
+            MyFundAdapter an = new MyFundAdapter(MyFund.this,data);
+            Log.d("d", "d");
 
-            t1.setText(name);
-            t2.setText(village);
-            t3.setText(email);
-            t4.setText(address);
-            t5.setText(mobile);
+            mRVFishPrice.setAdapter(an);
+            mRVFishPrice.setLayoutManager(new LinearLayoutManager(MyFund.this));
+
+
+
+
         }
 
 
     }
 
 }
+
