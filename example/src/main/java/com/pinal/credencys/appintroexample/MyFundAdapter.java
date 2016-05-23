@@ -5,16 +5,11 @@ package com.pinal.credencys.appintroexample;
  */
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,17 +17,13 @@ public class MyFundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     String id;
     private Context context;
     private LayoutInflater inflater;
-
-
     ArrayList<HashMap<String,String>> data;
     HashMap<String,String> result = new HashMap<String,String>();
-
 
     public MyFundAdapter(Context context, ArrayList<HashMap<String,String>> list){
         this.context=context;
         inflater= LayoutInflater.from(context);
         this.data=list;
-
 
     }
 
@@ -40,12 +31,9 @@ public class MyFundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=inflater.inflate(R.layout.my_fund_list, parent,false);
         final MyHolder holder=new MyHolder(view);
-
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
             }
         });
 
@@ -58,10 +46,7 @@ public class MyFundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         final MyHolder myHolder= (MyHolder) holder;
         result=data.get(position);
         myHolder.tv1.setText(result.get("area"));
-
         myHolder.tv2.setText(result.get("type"));
-
-
 
       /*  holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

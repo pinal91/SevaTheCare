@@ -4,8 +4,12 @@ package com.pinal.credencys.appintroexample;
  * Created by pinal on 16/5/16.
  */
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,28 +22,30 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static android.support.v4.app.ActivityCompat.startActivity;
+
 public class FundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     String id;
     private Context context;
     private LayoutInflater inflater;
 
 
-    ArrayList<HashMap<String,String>> data;
-    HashMap<String,String> result = new HashMap<String,String>();
+    ArrayList<HashMap<String, String>> data;
+    HashMap<String, String> result = new HashMap<String, String>();
 
 
-    public FundAdapter(Context context, ArrayList<HashMap<String,String>> list){
-        this.context=context;
-        inflater= LayoutInflater.from(context);
-        this.data=list;
+    public FundAdapter(Context context, ArrayList<HashMap<String, String>> list) {
+        this.context = context;
+        inflater = LayoutInflater.from(context);
+        this.data = list;
 
 
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.fund_list, parent,false);
-        final MyHolder holder=new MyHolder(view);
+        View view = inflater.inflate(R.layout.fund_list, parent, false);
+        final MyHolder holder = new MyHolder(view);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,26 +61,53 @@ public class FundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        final MyHolder myHolder= (MyHolder) holder;
-        result=data.get(position);
+        final MyHolder myHolder = (MyHolder) holder;
+        result = data.get(position);
         myHolder.tv1.setText(result.get("name"));
-        myHolder. tv2.setText(result.get("area"));
+        myHolder.tv2.setText(result.get("area"));
         myHolder.tv3.setText(result.get("type"));
         myHolder.tv4.setText(result.get("bed"));
         myHolder.tv5.setText(result.get("bath"));
 
 
-
-      /*  holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                id=myHolder.tv9.getText().toString();
+                id = myHolder.tv5.getText().toString();
+
+
+              /*
                 Intent i=new Intent(context,Detail.class);
                 i.putExtra("u_id",id);
                 context.startActivity(i);
                 Toast.makeText(context,id ,Toast.LENGTH_SHORT).show();
+*/
+
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + id));
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                context.startActivity(callIntent);
             }
-        });*/
+        });
 
         /*if(result.get("bath").isEmpty()){
             myHolder.tv5.setVisibility(View.GONE);

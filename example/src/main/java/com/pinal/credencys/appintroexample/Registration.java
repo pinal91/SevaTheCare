@@ -78,6 +78,7 @@ public class Registration extends AppCompatActivity  implements LocationListener
 
         isInternetOn();
 
+        new getresult().execute();
 
         date.setOnClickListener(new View.OnClickListener() {
 
@@ -201,8 +202,7 @@ public class Registration extends AppCompatActivity  implements LocationListener
                 else {
                     isInternetOn();
 
-                    Insert in = new Insert();
-                    in.execute();
+
                 }
             }
         });
@@ -225,7 +225,6 @@ public class Registration extends AppCompatActivity  implements LocationListener
 
             Toast.makeText(this, " Connected ", Toast.LENGTH_LONG).show();
 
-            new getresult().execute();
             return true;
 
         } else if (

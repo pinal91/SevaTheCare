@@ -2,6 +2,7 @@ package com.pinal.credencys.appintroexample;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -48,9 +49,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(Login.this,Registration.class);
-                startActivity(i);
-                finish();
+                isInternetOn();
+
             }
         });
 
@@ -77,12 +77,39 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    public final boolean isInternetOn() {
+
+        ConnectivityManager connec =
+                (ConnectivityManager)getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
+
+        if ( connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTED ||
+                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED ) {
+
+
+            Toast.makeText(this, " Connected ", Toast.LENGTH_LONG).show();
+            Intent i=new Intent(Login.this,Registration.class);
+            startActivity(i);
+            finish();
+
+            return true;
+
+        } else if (
+                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.DISCONNECTED ||
+                        connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED  ) {
+
+            Toast.makeText(this, " Not Connected ", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return false;
+    }
+
     class login extends AsyncTask<Void, Void, String> {
         int success;
 
         String s = "http://pinal3291.site88.net/login.php?email=" + Uri.encode(p1) + "&pass=" + Uri.encode(p2);
 
-        // String s = "http://10.0.2.2/restaurant/login.php?uname=" + Uri.encode(uname.getText().toString().trim()) + "&pass=" + Uri.encode(pass.getText().toString().trim());
         ProgressDialog pd;
 
         @Override
@@ -101,7 +128,7 @@ public class Login extends AppCompatActivity {
             Json js = new Json();
 
             Log.d("Async completed", "Done");
-            //  Log.d("database", "product comes"+ s);
+
 
             resp = js.display1(s);
             System.out.println("String response" + resp);

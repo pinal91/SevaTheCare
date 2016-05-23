@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,7 +17,6 @@ import java.util.HashMap;
 
 public class MyFund extends AppCompatActivity {
 
-    //  ListView lv;
     RecyclerView mRVFishPrice;
     Json js;
     PreferenceHelper pf;
@@ -45,7 +43,7 @@ public class MyFund extends AppCompatActivity {
 
 
         ProgressDialog pd;
-        String name,area,type,bed,bath,rooms,country,u_id;
+        String name,area,type;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -117,15 +115,12 @@ public class MyFund extends AppCompatActivity {
                 pd.dismiss();
 
             }
-            MyFundAdapter an = new MyFundAdapter(MyFund.this,data);
-            Log.d("d", "d");
 
+            MyFundAdapter an = new MyFundAdapter(MyFund.this,data);
+
+            Log.d("d", "d");
             mRVFishPrice.setAdapter(an);
             mRVFishPrice.setLayoutManager(new LinearLayoutManager(MyFund.this));
-
-
-
-
         }
 
 

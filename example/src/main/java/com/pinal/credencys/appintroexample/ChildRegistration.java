@@ -224,7 +224,7 @@ public class ChildRegistration extends AppCompatActivity  implements LocationLis
 
                 Toast.makeText(getApplicationContext(), "Inserterd Sucess", Toast.LENGTH_LONG).show();
 
-                Intent i3=new Intent(getApplicationContext(),ChildRegistration.class);
+                Intent i3=new Intent(getApplicationContext(),AddChild.class);
                 startActivity(i3);
                 finish();
             }
