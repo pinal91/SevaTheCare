@@ -18,8 +18,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-String id;
+public class Adapter2 extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    String id;
     private Context context;
     private LayoutInflater inflater;
 
@@ -28,7 +28,7 @@ String id;
     HashMap<String,String> result = new HashMap<String,String>();
 
 
-    public Adapter(Context context, ArrayList<HashMap<String,String>> list){
+    public Adapter2(Context context, ArrayList<HashMap<String,String>> list){
         this.context=context;
         inflater= LayoutInflater.from(context);
         this.data=list;
@@ -42,12 +42,11 @@ String id;
         final MyHolder holder=new MyHolder(view);
 
         view.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
 
 
-
-          }
+            }
         });
 
         return holder;
